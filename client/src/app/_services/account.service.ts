@@ -10,7 +10,8 @@ import { ReplaySubject } from 'rxjs';
 })
 export class AccountService {
   baseUrl = environment.apiUrl;
-
+  /*The purpose of using asObservable*/
+  /*Other components could not .next() to currentUserSource, but other components can .subscribe() to currentUser$ */
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
